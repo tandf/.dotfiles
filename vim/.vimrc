@@ -1,0 +1,319 @@
+"""""""""""""""""""""""""Vundle"""""""""""""""""""""""""
+set nocompatible              " 去除 VI 一致性，必须
+filetype off                  " 必须
+
+" 设置包括 vundle 和初始化相关的 runtime path
+if has("win32")
+    set rtp+=E:/Software/Vim/vimfiles/bundle/Vundle.vim
+    call vundle#begin("E:/Software/Vim/vimfiles/bundle")
+else
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
+endif
+call vundle#begin()
+
+" 让 vundle 管理插件版本，必须
+Plugin 'VundleVim/Vundle.vim'
+
+" 请将安装插件的命令放在 vundle#begin 和 vundle#end 之间。
+
+Plugin 'KeitaNakamura/tex-conceal.vim'
+Plugin 'Markdown'
+Plugin 'SirVer/ultisnips'
+Plugin 'Solarized'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'honza/vim-snippets'
+Plugin 'hotoo/pangu.vim'
+Plugin 'iamcco/markdown-preview.vim'
+Plugin 'iamcco/mathjax-support-for-mkdp'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+Plugin 'junegunn/vim-easy-align'
+Plugin 'lervag/vimtex'
+Plugin 'mattn/emmet-vim'
+Plugin 'nelstrom/vim-markdown-folding'
+Plugin 'nelstrom/vim-visual-star-search'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
+
+" 你的所有插件需要在下面这行之前
+call vundle#end()            " 必须
+filetype plugin indent on    " 必须 加载 vim 自带和插件相应的语法和文件类型相关脚本
+" 忽视插件改变缩进，可以使用以下替代：
+filetype plugin on
+"
+" 简要帮助文档
+" :PluginList       - 列出所有已配置的插件
+" :PluginInstall    - 安装插件，追加 `!` 用以更新或使用 :PluginUpdate
+" :PluginSearch foo - 搜索 foo ; 追加 `!` 清除本地缓存
+" :PluginClean      - 清除未使用插件，需要确认；追加 `!` 自动批准移除未使用插件
+"
+" 查阅 :h vundle 获取更多细节和 wiki 以及 FAQ
+" 将你自己的非插件片段放在这行之后
+"""""""""""""""""""""""""Vundle"""""""""""""""""""""""""
+" 开启高亮
+syntax enable
+
+" 设置文件编码格式
+set encoding=utf-8
+set fileencodings=utf-8,chinese,latin-1,gbk,gb18030,gk2312
+if has("win32")
+set fileencoding=chinese
+else
+set fileencoding=utf-8
+endif
+" 解决菜单乱码
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim
+" 解决 console 提示信息输出乱码
+language messages zh_CN.utf-8
+
+" leader 键
+let mapleader=","
+
+" 大小写设置
+set ignorecase
+set infercase
+set smartcase
+
+" 当输入查找命令时，启用高亮
+noremap n :set hlsearch<CR>n
+noremap N :set hlsearch<CR>N
+noremap / :set hlsearch<CR>/
+noremap ? :set hlsearch<CR>?
+noremap * *:set hlsearch<CR>
+noremap # #:set hlsearch<CR>
+"" 当光标一段时间保持不动了，就禁用高亮
+"autocmd cursorhold * set nohlsearch
+" <C-l>手动关闭高亮
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+" 搜索的同时即时显示结果
+set incsearch
+" 按下 <leader>c 统计匹配个数
+nnoremap <leader>c :set hlsearch<CR>:%s///gn<CR><C-o>
+
+" gui 设置
+set guifont=Consolas:h12:cANSI
+" 不显示菜单、工具栏、滚动条
+set guioptions-=TrLm
+" 取消边框
+set go=
+" 指针显示
+set mouse=a
+" 显示光标位置、显示行号
+set ruler
+set number
+" 光标和底部距离
+set scrolloff=5
+" 配色设置
+" colors koehler
+set t_Co=256
+set background=dark
+colorscheme solarized
+" 浅色高亮当前行、列
+set cursorline
+set cursorcolumn
+
+source $VIMRUNTIME/mswin.vim
+behave mswin
+
+" tab 键设置
+set expandtab
+set softtabstop=4
+set tabstop=4
+set shiftwidth=4
+autocmd FileType ruby setlocal softtabstop=2 tabstop=2 shiftwidth=2
+
+" public: 不缩进
+set cino=g0
+
+" 不备份
+set nobackup
+
+" 切换文件前不一定要保存当前文件，退出时询问是否保存
+set hidden
+
+" 记录光标位置，下次开启文件时移动光标至此
+augroup resCur
+autocmd!
+autocmd BufReadPost * call setpos(".", getpos("'\""))
+augroup END
+
+" 打开文件时切换到文件目录
+autocmd BufEnter * silent! lcd %:p:h
+
+" 设置默认进制为十进制
+set nrformats=
+
+" 设置 Ex 命令缓存区长度
+set history=1000
+
+" 取消<C-V>快捷键以使用 Visual Block
+unmap <C-V>
+iunmap <C-V>
+" 取消<C-A>快捷键以使用加减操作
+unmap <C-A>
+iunmap <C-A>
+" 取消<C-Y>
+unmap <C-Y>
+iunmap <C-Y>
+" 取消<C-Z>
+unmap <C-Z>
+iunmap <C-Z>
+
+" 将命令行中输入的 %% 替换为当前目录
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:p:h').'/' : '%%'
+
+" 在命令行窗口 使用<C-p>和<C-n>完全替代<Up>和<Down>
+cnoremap <C-P> <Up>
+cnoremap <C-N> <Down>
+
+" 补全菜单设置
+set wildmode=list:full
+
+" 将 f{char}的 back 操作映射到"\"上，","充当 leader
+noremap \ ,
+
+" pangu.vim 插件自动添加空格
+"autocmd BufWritePre *.markdown,*.md,*.text,*.txt,*.wiki,*.cnx call PanGuSpacing()
+
+" 开启 matchit 插件，使用 % 匹配关键字
+packadd! matchit
+
+" <leader>s 打开、关闭拼写检查
+nnoremap <leader>s :set invspell<CR>
+" 拼写检查语言为中英文
+set spelllang=en,cjk
+
+" markdown-preview 插件相关设置
+let g:mkdp_auto_close=0
+
+" 默认汇编语言
+let asmsyntax="masm"
+
+" FZF shortcut
+nnoremap <leader>f :FZF<CR>
+
+" vim-easy-align settings
+xmap <leader>a <Plug>(EasyAlign)
+nmap <leader>a <Plug>(EasyAlign)
+
+" emmet settings
+" only for html css and markdown
+let g:user_emmet_install_global = 0
+autocmd FileType php,html,css,markdown,eruby EmmetInstall
+
+" Python show 81th character
+autocmd FileType python set colorcolumn=81
+autocmd FileType python hi ColorColumn ctermbg=none ctermfg=255
+
+" vimtex
+let maplocalleader = ','
+let g:tex_flavor='pdflatex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=2
+let g:tex_conceal='abdmg'
+
+" UltiSnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+if has("win32")
+    let g:UltiSnipsSnippetsDir = "E:/Software/Vim/vimfiles/bundle/ultisnips/UltiSnips"
+else
+    let g:UltiSnipsSnippetsDir = "~/.vim/bundle/ultisnips/UltiSnips"
+endif
+
+" Linux fcitx auto change
+if has("unix")
+    function! Fcitx2en()
+        let s:input_status = system('fcitx-remote')
+        if s:input_status == 2
+            call system('fcitx-remote -c')
+        endif
+    endfunction
+    au InsertLeave * call Fcitx2en()
+endif
+
+" leetcode
+command LT !leetcode test %
+command LS !leetcode submit %
+
+map <F2> : call Save() <CR>
+map <F4> : !echo % <CR>
+map <F7> : call Compile() <CR>
+map <F9> : call Run() <CR>
+
+"set makeprg=g++\ %\ -o\ %<\ -g\ -Wall\ -Wextra\ -DLAEKOV_LOCAL
+func Save()
+if &filetype=='javascript'
+    set expandtab
+endif
+call Highlight_marks()
+exec "w"
+endfunc
+
+func Highlight_marks()
+" 标记 <NOTE>
+exec "match Todo /<.*NOTE.*>/"
+endfunc
+call Highlight_marks()
+
+func Compile()
+exec "w"
+if &filetype=='cpp'
+    if has("win32")
+        exec "!g++ % -o %< -std=c++0x -g -Wall -Wextra -DLAEKOV_LOCAL && size %<.exe"
+    else
+        exec "!g++ % -o %< -std=c++0x -g -Wall -Wextra -DLAEKOV_LOCAL && size %<"
+    endif
+elseif &filetype=='c'
+    exec "!gcc %  -o %< -g"
+elseif &filetype=='pascal'
+    exec "!fpc % -g"
+elseif &filetype=='sh'
+    exec "!chmod +x %"
+elseif &filetype=='java'
+    exec "!javac %"
+elseif &filetype=='tex'
+    exec "!xelatex %"
+elseif &filetype=='ruby'
+    exec "!ruby -c %"
+endif
+endfunc
+
+func Run()
+if &filetype=='python'
+    exec "!python3 %"
+elseif &filetype=='sh'
+    exec "!bash %"
+elseif &filetype=='java'
+    exec "!java %<"
+elseif &filetype=='html'
+    if has("win32")
+        exec "!chrome %"
+    else
+        exec "!google-chrome ./%"
+    endif
+elseif &filetype=='tex'
+    exec "!open %<.pdf"
+elseif &filetype=='javascript'
+    exec "!node %"
+elseif &filetype=='markdown'
+    exec "MarkdownPreview"
+elseif &filetype=='ruby'
+    exec "!ruby -w %"
+elseif &filetype=='vb'
+    exec "!%"
+else
+    if has("win32")
+        exec "!%<.exe"
+    else
+        exec "!./%<"
+    endif
+endif
+endfunc
