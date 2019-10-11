@@ -1,0 +1,32 @@
+snippet beg "begin{} / end{}" ba
+\begin{$1}
+	$0
+\end{$1}
+endsnippet
+
+snippet '(?i)todo' "TODO" rw
+% <TODO> 
+endsnippet
+
+snippet '(?i)note' "NOTE" rw
+% <NOTE>
+endsnippet
+
+snippet im "NOTE" wA
+$ $1 $ $0
+endsnippet
+
+snippet dm "NOTE" wA
+
+$$ $1 $$
+$0
+endsnippet
+
+snippet textbf "textbf" wA
+\textbf{$1} $0
+endsnippet
+
+snippet textit "textit" wA
+\textit{$1} $0
+endsnippet
+
