@@ -30,3 +30,89 @@ snippet textit "textit" wA
 \textit{$1} $0
 endsnippet
 
+snippet fig "Figure environment" b
+\begin{figure}[${2:htpb}]
+	\centering
+	\includegraphics[width=${3:0.8}\linewidth]{${4:name.ext}}
+	\caption{${5:${4/(.*\/)*([\w-]+)(\.\w*)?/\u$2/}}$0}
+	\label{fig:${4/(.*\/)*([\w-]+)(\.\w*)?/$2/}}
+\end{figure}
+endsnippet
+
+snippet part "Part" b
+\part{${1:part name}}%
+\label{prt:${2:${1/(\w+)|\W+/(?1:\L$0\E:-)/ga}}}
+
+$0
+endsnippet
+
+snippet cha "Chapter" b
+\chapter{${1:chapter name}}%
+\label{cha:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/ga}}}
+
+$0
+endsnippet
+
+snippet sec "Section"
+\section{${1:${VISUAL:section name}}}%
+\label{sec:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/ga}}}
+${3:% TODO}
+
+$0
+endsnippet
+
+snippet sec* "Section"
+\section*{${1:${VISUAL:section name}}}%
+\label{sec:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/ga}}}
+${3:% TODO}
+
+$0
+endsnippet
+
+snippet sub "Subsection"
+\subsection{${1:${VISUAL:subsection name}}}%
+\label{sub:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/ga}}}
+${3:% TODO}
+
+$0
+endsnippet
+
+snippet sub* "Subsection"
+\subsection*{${1:${VISUAL:subsection name}}}%
+\label{sub:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/ga}}}
+${3:% TODO}
+
+$0
+endsnippet
+
+snippet ssub "Subsubsection"
+\subsubsection{${1:${VISUAL:subsubsection name}}}%
+\label{ssub:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/ga}}}
+${3:% TODO}
+
+$0
+endsnippet
+
+snippet ssub* "Subsubsection"
+\subsubsection*{${1:${VISUAL:subsubsection name}}}%
+\label{ssub:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/ga}}}
+${3:% TODO}
+
+$0
+endsnippet
+
+snippet par "Paragraph"
+\paragraph{${1:${VISUAL:paragraph name}}}%
+\label{par:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/ga}}}
+${3:% TODO}
+
+$0
+endsnippet
+
+snippet subp "Subparagraph"
+\subparagraph{${1:${VISUAL:subparagraph name}}}%
+\label{par:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/ga}}}
+${3:% TODO}
+
+$0
+endsnippet

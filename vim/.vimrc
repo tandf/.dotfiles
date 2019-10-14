@@ -84,16 +84,16 @@ noremap n :set hlsearch<CR>n
 noremap N :set hlsearch<CR>N
 noremap / :set hlsearch<CR>/
 noremap ? :set hlsearch<CR>?
-noremap * *:set hlsearch<CR>
-noremap # #:set hlsearch<CR>
+noremap * *:set hlsearch<CR>N
+noremap # #:set hlsearch<CR>N
 "" 当光标一段时间保持不动了，就禁用高亮
 "autocmd cursorhold * set nohlsearch
 " <C-l>手动关闭高亮
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 " 搜索的同时即时显示结果
 set incsearch
-" 按下 <leader>c 统计匹配个数
-nnoremap <leader>c :set hlsearch<CR>:%s///gn<CR><C-o>
+" 按下 <leader>n 统计匹配个数
+nnoremap <leader>n :set hlsearch<CR>:%s///gn<CR><C-o>
 
 " gui 设置
 set guifont=Consolas:h12:cANSI
@@ -160,9 +160,12 @@ iunmap <C-A>
 " 取消<C-Y>
 unmap <C-Y>
 iunmap <C-Y>
-" 取消<C-Z>
-unmap <C-Z>
-iunmap <C-Z>
+" 取消<C-H>
+unmap <C-H>
+iunmap <C-H>
+" 取消<C-F>
+unmap <C-F>
+iunmap <C-F>
 
 " 将命令行中输入的 %% 替换为当前目录
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:p:h').'/' : '%%'
@@ -183,10 +186,10 @@ noremap \ ,
 " 开启 matchit 插件，使用 % 匹配关键字
 packadd! matchit
 
-" <leader>s 打开、关闭拼写检查
-nnoremap <leader>s :set invspell<CR>
 " 拼写检查语言为中英文
 set spelllang=en,cjk
+" <leader>s 打开、关闭拼写检查
+nnoremap <leader>s :set invspell<CR>:set spell?<CR>
 
 " markdown-preview 插件相关设置
 let g:mkdp_auto_close=0
@@ -201,6 +204,26 @@ nnoremap <leader>f :FZF<CR>
 xmap <leader>a <Plug>(EasyAlign)
 nmap <leader>a <Plug>(EasyAlign)
 
+" move to the same place of another pane
+nnoremap gW :call SwitchToAnotherPane()<CR>
+func SwitchToAnotherPane()
+    " If only one pane, split
+    if winnr('$') == 1
+        exec "vsplit"
+    end
+    if winnr('$') == 2
+        execute 'normal! mH`H'
+    end
+endfunc
+
+" move in tabs
+nnoremap H gT
+nnoremap L gt
+
+" find TODO
+nnoremap <C-N> /\([%#] \)\?TODO.*$<CR>:noh<CR>ztgn<C-G>
+snoremap <C-N> <ESC>/\([%#] \)\?TODO.*$<CR>:noh<CR>ztgn<C-G>
+
 " emmet settings
 " only for html css and markdown
 let g:user_emmet_install_global = 0
@@ -214,6 +237,8 @@ autocmd FileType python hi ColorColumn ctermbg=none ctermfg=255
 let maplocalleader = ','
 let g:tex_flavor='pdflatex'
 let g:vimtex_view_method='zathura'
+let g:vimtex_view_general_options = '-reuse-instance -forward-search @tex @line @pdf'
+let g:vimtex_view_general_options_latexmk = '-reuse-instance'
 let g:vimtex_quickfix_mode=0
 set conceallevel=2
 let g:tex_conceal='abdmg'
@@ -288,7 +313,11 @@ endfunc
 
 func Run()
 if &filetype=='python'
-    exec "!python3 %"
+    if has("win32")
+        exec "!start cmd /c \"python %\" & pause"
+    else
+        exec "!python3 %"
+    endif
 elseif &filetype=='sh'
     exec "!bash %"
 elseif &filetype=='java'
@@ -309,6 +338,8 @@ elseif &filetype=='ruby'
     exec "!ruby -w %"
 elseif &filetype=='vb'
     exec "!%"
+elseif &filetype=='go'
+    exec "!start cmd /c \"go run %\" & pause"
 else
     if has("win32")
         exec "!%<.exe"
