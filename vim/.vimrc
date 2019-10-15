@@ -221,8 +221,8 @@ nnoremap H gT
 nnoremap L gt
 
 " find TODO
-nnoremap <C-N> /\([%#] \)\?TODO.*$<CR>:noh<CR>ztgn<C-G>
-snoremap <C-N> <ESC>/\([%#] \)\?TODO.*$<CR>:noh<CR>ztgn<C-G>
+nnoremap <C-N> /\([%#] \)\?.*TODO.*$<CR>:noh<CR>ztgn<C-G>
+snoremap <C-N> <ESC>/\([%#] \)\?.*TODO.*$<CR>:noh<CR>ztgn<C-G>
 
 " emmet settings
 " only for html css and markdown
