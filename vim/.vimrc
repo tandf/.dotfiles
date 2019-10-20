@@ -35,6 +35,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'nelstrom/vim-markdown-folding'
 Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'tell-k/vim-autopep8'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
@@ -160,12 +161,15 @@ iunmap <C-A>
 " 取消<C-Y>
 unmap <C-Y>
 iunmap <C-Y>
-" 取消<C-H>
-unmap <C-H>
-iunmap <C-H>
-" 取消<C-F>
-unmap <C-F>
-iunmap <C-F>
+
+if has("win32")
+    " 取消<C-H>
+    unmap <C-H>
+    iunmap <C-H>
+    " 取消<C-F>
+    unmap <C-F>
+    iunmap <C-F>
+endif
 
 " 将命令行中输入的 %% 替换为当前目录
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:p:h').'/' : '%%'
@@ -221,8 +225,8 @@ nnoremap H gT
 nnoremap L gt
 
 " find TODO
-nnoremap <C-N> /\([%#] \)\?.*TODO.*$<CR>:noh<CR>ztgn<C-G>
-snoremap <C-N> <ESC>/\([%#] \)\?.*TODO.*$<CR>:noh<CR>ztgn<C-G>
+nnoremap <C-N> /\([%#/]* \)TODO.*$<CR>:noh<CR>ztgn<C-G>
+snoremap <C-N> <ESC>/\([%#/]* \)TODO.*$<CR>:noh<CR>ztgn<C-G>
 
 " emmet settings
 " only for html css and markdown
