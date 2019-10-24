@@ -257,17 +257,6 @@ else
     let g:UltiSnipsSnippetsDir = "~/.vim/bundle/ultisnips/UltiSnips"
 endif
 
-" Linux fcitx auto change
-if has("unix")
-    function! Fcitx2en()
-        let s:input_status = system('fcitx-remote')
-        if s:input_status == 2
-            call system('fcitx-remote -c')
-        endif
-    endfunction
-    au InsertLeave * call Fcitx2en()
-endif
-
 " leetcode
 command LT !leetcode test %
 command LS !leetcode submit %
@@ -279,11 +268,13 @@ map <F9> : call Run() <CR>
 
 "set makeprg=g++\ %\ -o\ %<\ -g\ -Wall\ -Wextra\ -DLAEKOV_LOCAL
 func Save()
-if &filetype=='javascript'
-    set expandtab
-endif
 call Highlight_marks()
 exec "w"
+if &filetype=='javascript'
+    set expandtab
+elseif &filetype=='python'
+    exec "Autopep8"
+endif
 endfunc
 
 func Highlight_marks()
