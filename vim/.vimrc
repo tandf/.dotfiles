@@ -55,6 +55,10 @@ filetype plugin on
 " 查阅 :h vundle 获取更多细节和 wiki 以及 FAQ
 " 将你自己的非插件片段放在这行之后
 """""""""""""""""""""""""Vundle"""""""""""""""""""""""""
+
+" Reloading vimrc
+noremap <S-F5> :so $MYVIMRC<CR>
+
 " 开启高亮
 syntax enable
 
@@ -262,7 +266,7 @@ set tags=tags;
 set autochdir
 nnoremap <c-]> g<c-]>
 
-" cscopes
+" cscope
 set csre
 function! LoadCscope()
   let db = findfile("cscope.out", ".;")
@@ -278,6 +282,7 @@ function! LoadCscope()
 endfunction
 au BufEnter * call LoadCscope()
 set cscopequickfix=c-,d-,e-,g-,i-,s-,t-
+nmap <C-t> :colder<CR>:cc<CR>
 
 " leetcode
 command LT !leetcode test %
