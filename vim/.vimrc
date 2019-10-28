@@ -282,7 +282,6 @@ function! LoadCscope()
 endfunction
 au BufEnter * call LoadCscope()
 set cscopequickfix=c-,d-,e-,g-,i-,s-,t-
-nmap <C-t> :colder<CR>:cc<CR>
 
 " leetcode
 command LT !leetcode test %
