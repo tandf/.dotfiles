@@ -257,6 +257,28 @@ else
     let g:UltiSnipsSnippetsDir = "~/.vim/bundle/ultisnips/UltiSnips"
 endif
 
+" ctags
+set tags=tags;
+set autochdir
+nnoremap <c-]> g<c-]>
+
+" cscopes
+set csre
+function! LoadCscope()
+  let db = findfile("cscope.out", ".;")
+  if (!empty(db))
+    let path = strpart(db, 0, match(db, "/cscope.out$"))
+    set nocscopeverbose " suppress 'duplicate connection' error
+    exe "cs add " . db . " " . path
+    set cscopeverbose
+  " else add the database pointed to by environment variable 
+  elseif $CSCOPE_DB != "" 
+    cs add $CSCOPE_DB
+  endif
+endfunction
+au BufEnter * call LoadCscope()
+set cscopequickfix=c-,d-,e-,g-,i-,s-,t-
+
 " leetcode
 command LT !leetcode test %
 command LS !leetcode submit %
