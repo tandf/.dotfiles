@@ -1,8 +1,8 @@
 """""""""""""""""""""""""Vundle"""""""""""""""""""""""""
-set nocompatible              " å»é™¤ VI ä¸€è‡´æ€§ï¼Œå¿…é¡»
-filetype off                  " å¿…é¡»
+set nocompatible              " È¥³ı VI Ò»ÖÂĞÔ£¬±ØĞë
+filetype off                  " ±ØĞë
 
-" è®¾ç½®åŒ…æ‹¬ vundle å’Œåˆå§‹åŒ–ç›¸å…³çš„ runtime path
+" ÉèÖÃ°üÀ¨ vundle ºÍ³õÊ¼»¯Ïà¹ØµÄ runtime path
 if has("win32")
     set rtp+=E:/Software/Vim/vimfiles/bundle/Vundle.vim
     call vundle#begin("E:/Software/Vim/vimfiles/bundle")
@@ -10,12 +10,11 @@ else
     set rtp+=~/.vim/bundle/Vundle.vim
     call vundle#begin()
 endif
-call vundle#begin()
 
-" è®© vundle ç®¡ç†æ’ä»¶ç‰ˆæœ¬ï¼Œå¿…é¡»
+" ÈÃ vundle ¹ÜÀí²å¼ş°æ±¾£¬±ØĞë
 Plugin 'VundleVim/Vundle.vim'
 
-" è¯·å°†å®‰è£…æ’ä»¶çš„å‘½ä»¤æ”¾åœ¨ vundle#begin å’Œ vundle#end ä¹‹é—´ã€‚
+" Çë½«°²×°²å¼şµÄÃüÁî·ÅÔÚ vundle#begin ºÍ vundle#end Ö®¼ä¡£
 
 Plugin 'KeitaNakamura/tex-conceal.vim'
 Plugin 'Markdown'
@@ -40,29 +39,29 @@ Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 
-" ä½ çš„æ‰€æœ‰æ’ä»¶éœ€è¦åœ¨ä¸‹é¢è¿™è¡Œä¹‹å‰
-call vundle#end()            " å¿…é¡»
-filetype plugin indent on    " å¿…é¡» åŠ è½½ vim è‡ªå¸¦å’Œæ’ä»¶ç›¸åº”çš„è¯­æ³•å’Œæ–‡ä»¶ç±»å‹ç›¸å…³è„šæœ¬
-" å¿½è§†æ’ä»¶æ”¹å˜ç¼©è¿›ï¼Œå¯ä»¥ä½¿ç”¨ä»¥ä¸‹æ›¿ä»£ï¼š
+" ÄãµÄËùÓĞ²å¼şĞèÒªÔÚÏÂÃæÕâĞĞÖ®Ç°
+call vundle#end()            " ±ØĞë
+filetype plugin indent on    " ±ØĞë ¼ÓÔØ vim ×Ô´øºÍ²å¼şÏàÓ¦µÄÓï·¨ºÍÎÄ¼şÀàĞÍÏà¹Ø½Å±¾
+" ºöÊÓ²å¼ş¸Ä±äËõ½ø£¬¿ÉÒÔÊ¹ÓÃÒÔÏÂÌæ´ú£º
 filetype plugin on
 "
-" ç®€è¦å¸®åŠ©æ–‡æ¡£
-" :PluginList       - åˆ—å‡ºæ‰€æœ‰å·²é…ç½®çš„æ’ä»¶
-" :PluginInstall    - å®‰è£…æ’ä»¶ï¼Œè¿½åŠ  `!` ç”¨ä»¥æ›´æ–°æˆ–ä½¿ç”¨ :PluginUpdate
-" :PluginSearch foo - æœç´¢ foo ; è¿½åŠ  `!` æ¸…é™¤æœ¬åœ°ç¼“å­˜
-" :PluginClean      - æ¸…é™¤æœªä½¿ç”¨æ’ä»¶ï¼Œéœ€è¦ç¡®è®¤ï¼›è¿½åŠ  `!` è‡ªåŠ¨æ‰¹å‡†ç§»é™¤æœªä½¿ç”¨æ’ä»¶
+" ¼òÒª°ïÖúÎÄµµ
+" :PluginList       - ÁĞ³öËùÓĞÒÑÅäÖÃµÄ²å¼ş
+" :PluginInstall    - °²×°²å¼ş£¬×·¼Ó `!` ÓÃÒÔ¸üĞÂ»òÊ¹ÓÃ :PluginUpdate
+" :PluginSearch foo - ËÑË÷ foo ; ×·¼Ó `!` Çå³ı±¾µØ»º´æ
+" :PluginClean      - Çå³ıÎ´Ê¹ÓÃ²å¼ş£¬ĞèÒªÈ·ÈÏ£»×·¼Ó `!` ×Ô¶¯Åú×¼ÒÆ³ıÎ´Ê¹ÓÃ²å¼ş
 "
-" æŸ¥é˜… :h vundle è·å–æ›´å¤šç»†èŠ‚å’Œ wiki ä»¥åŠ FAQ
-" å°†ä½ è‡ªå·±çš„éæ’ä»¶ç‰‡æ®µæ”¾åœ¨è¿™è¡Œä¹‹å
+" ²éÔÄ :h vundle »ñÈ¡¸ü¶àÏ¸½ÚºÍ wiki ÒÔ¼° FAQ
+" ½«Äã×Ô¼ºµÄ·Ç²å¼şÆ¬¶Î·ÅÔÚÕâĞĞÖ®ºó
 """""""""""""""""""""""""Vundle"""""""""""""""""""""""""
 
 " Reloading vimrc
-noremap <S-F5> :so $MYVIMRC<CR>
+command LoadVimrc :so $MYVIMRC<CR>
 
-" å¼€å¯é«˜äº®
+" ¿ªÆô¸ßÁÁ
 syntax enable
 
-" è®¾ç½®æ–‡ä»¶ç¼–ç æ ¼å¼
+" ÉèÖÃÎÄ¼ş±àÂë¸ñÊ½
 set encoding=utf-8
 set fileencodings=utf-8,chinese,latin-1,gbk,gb18030,gk2312
 if has("win32")
@@ -70,139 +69,139 @@ set fileencoding=chinese
 else
 set fileencoding=utf-8
 endif
-" è§£å†³èœå•ä¹±ç 
+" ½â¾ö²Ëµ¥ÂÒÂë
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
-" è§£å†³ console æç¤ºä¿¡æ¯è¾“å‡ºä¹±ç 
+" ½â¾ö console ÌáÊ¾ĞÅÏ¢Êä³öÂÒÂë
 language messages zh_CN.utf-8
 
-" leader é”®
+" leader ¼ü
 let mapleader=","
 
-" å¤§å°å†™è®¾ç½®
+" ´óĞ¡Ğ´ÉèÖÃ
 set ignorecase
 set infercase
 set smartcase
 
-" å½“è¾“å…¥æŸ¥æ‰¾å‘½ä»¤æ—¶ï¼Œå¯ç”¨é«˜äº®
+" µ±ÊäÈë²éÕÒÃüÁîÊ±£¬ÆôÓÃ¸ßÁÁ
 noremap n :set hlsearch<CR>n
 noremap N :set hlsearch<CR>N
 noremap / :set hlsearch<CR>/
 noremap ? :set hlsearch<CR>?
 noremap * *:set hlsearch<CR>N
 noremap # #:set hlsearch<CR>N
-"" å½“å…‰æ ‡ä¸€æ®µæ—¶é—´ä¿æŒä¸åŠ¨äº†ï¼Œå°±ç¦ç”¨é«˜äº®
+"" µ±¹â±êÒ»¶ÎÊ±¼ä±£³Ö²»¶¯ÁË£¬¾Í½ûÓÃ¸ßÁÁ
 "autocmd cursorhold * set nohlsearch
-" <C-l>æ‰‹åŠ¨å…³é—­é«˜äº®
+" <C-l>ÊÖ¶¯¹Ø±Õ¸ßÁÁ
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
-" æœç´¢çš„åŒæ—¶å³æ—¶æ˜¾ç¤ºç»“æœ
+" ËÑË÷µÄÍ¬Ê±¼´Ê±ÏÔÊ¾½á¹û
 set incsearch
-" æŒ‰ä¸‹ <leader>n ç»Ÿè®¡åŒ¹é…ä¸ªæ•°
+" °´ÏÂ <leader>n Í³¼ÆÆ¥Åä¸öÊı
 nnoremap <leader>n :set hlsearch<CR>:%s///gn<CR><C-o>
 
-" gui è®¾ç½®
+" gui ÉèÖÃ
 set guifont=Consolas:h12:cANSI
-" ä¸æ˜¾ç¤ºèœå•ã€å·¥å…·æ ã€æ»šåŠ¨æ¡
+" ²»ÏÔÊ¾²Ëµ¥¡¢¹¤¾ßÀ¸¡¢¹ö¶¯Ìõ
 set guioptions-=TrLm
-" å–æ¶ˆè¾¹æ¡†
+" È¡Ïû±ß¿ò
 set go=
-" æŒ‡é’ˆæ˜¾ç¤º
+" Ö¸ÕëÏÔÊ¾
 set mouse=a
-" æ˜¾ç¤ºå…‰æ ‡ä½ç½®ã€æ˜¾ç¤ºè¡Œå·
+" ÏÔÊ¾¹â±êÎ»ÖÃ¡¢ÏÔÊ¾ĞĞºÅ
 set ruler
 set number
-" å…‰æ ‡å’Œåº•éƒ¨è·ç¦»
+" ¹â±êºÍµ×²¿¾àÀë
 set scrolloff=5
-" é…è‰²è®¾ç½®
+" ÅäÉ«ÉèÖÃ
 " colors koehler
 set t_Co=256
 set background=dark
 colorscheme solarized
-" æµ…è‰²é«˜äº®å½“å‰è¡Œã€åˆ—
+" Ç³É«¸ßÁÁµ±Ç°ĞĞ¡¢ÁĞ
 set cursorline
 set cursorcolumn
 
 source $VIMRUNTIME/mswin.vim
 behave mswin
 
-" tab é”®è®¾ç½®
+" tab ¼üÉèÖÃ
 set expandtab
 set softtabstop=4
 set tabstop=4
 set shiftwidth=4
 autocmd FileType ruby setlocal softtabstop=2 tabstop=2 shiftwidth=2
 
-" public: ä¸ç¼©è¿›
+" public: ²»Ëõ½ø
 set cino=g0
 
-" ä¸å¤‡ä»½
+" ²»±¸·İ
 set nobackup
 
-" åˆ‡æ¢æ–‡ä»¶å‰ä¸ä¸€å®šè¦ä¿å­˜å½“å‰æ–‡ä»¶ï¼Œé€€å‡ºæ—¶è¯¢é—®æ˜¯å¦ä¿å­˜
+" ÇĞ»»ÎÄ¼şÇ°²»Ò»¶¨Òª±£´æµ±Ç°ÎÄ¼ş£¬ÍË³öÊ±Ñ¯ÎÊÊÇ·ñ±£´æ
 set hidden
 
-" è®°å½•å…‰æ ‡ä½ç½®ï¼Œä¸‹æ¬¡å¼€å¯æ–‡ä»¶æ—¶ç§»åŠ¨å…‰æ ‡è‡³æ­¤
+" ¼ÇÂ¼¹â±êÎ»ÖÃ£¬ÏÂ´Î¿ªÆôÎÄ¼şÊ±ÒÆ¶¯¹â±êÖÁ´Ë
 augroup resCur
 autocmd!
 autocmd BufReadPost * call setpos(".", getpos("'\""))
 augroup END
 
-" æ‰“å¼€æ–‡ä»¶æ—¶åˆ‡æ¢åˆ°æ–‡ä»¶ç›®å½•
+" ´ò¿ªÎÄ¼şÊ±ÇĞ»»µ½ÎÄ¼şÄ¿Â¼
 autocmd BufEnter * silent! lcd %:p:h
 
-" è®¾ç½®é»˜è®¤è¿›åˆ¶ä¸ºåè¿›åˆ¶
+" ÉèÖÃÄ¬ÈÏ½øÖÆÎªÊ®½øÖÆ
 set nrformats=
 
-" è®¾ç½® Ex å‘½ä»¤ç¼“å­˜åŒºé•¿åº¦
+" ÉèÖÃ Ex ÃüÁî»º´æÇø³¤¶È
 set history=1000
 
-" å–æ¶ˆ<C-V>å¿«æ·é”®ä»¥ä½¿ç”¨ Visual Block
+" È¡Ïû<C-V>¿ì½İ¼üÒÔÊ¹ÓÃ Visual Block
 unmap <C-V>
 iunmap <C-V>
-" å–æ¶ˆ<C-A>å¿«æ·é”®ä»¥ä½¿ç”¨åŠ å‡æ“ä½œ
+" È¡Ïû<C-A>¿ì½İ¼üÒÔÊ¹ÓÃ¼Ó¼õ²Ù×÷
 unmap <C-A>
 iunmap <C-A>
-" å–æ¶ˆ<C-Y>
+" È¡Ïû<C-Y>
 unmap <C-Y>
 iunmap <C-Y>
 
 if has("win32")
-    " å–æ¶ˆ<C-H>
+    " È¡Ïû<C-H>
     unmap <C-H>
     iunmap <C-H>
-    " å–æ¶ˆ<C-F>
+    " È¡Ïû<C-F>
     unmap <C-F>
     iunmap <C-F>
 endif
 
-" å°†å‘½ä»¤è¡Œä¸­è¾“å…¥çš„ %% æ›¿æ¢ä¸ºå½“å‰ç›®å½•
+" ½«ÃüÁîĞĞÖĞÊäÈëµÄ %% Ìæ»»Îªµ±Ç°Ä¿Â¼
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:p:h').'/' : '%%'
 
-" åœ¨å‘½ä»¤è¡Œçª—å£ ä½¿ç”¨<C-p>å’Œ<C-n>å®Œå…¨æ›¿ä»£<Up>å’Œ<Down>
+" ÔÚÃüÁîĞĞ´°¿Ú Ê¹ÓÃ<C-p>ºÍ<C-n>ÍêÈ«Ìæ´ú<Up>ºÍ<Down>
 cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
 
-" è¡¥å…¨èœå•è®¾ç½®
+" ²¹È«²Ëµ¥ÉèÖÃ
 set wildmode=list:full
 
-" å°† f{char}çš„ back æ“ä½œæ˜ å°„åˆ°"\"ä¸Šï¼Œ","å……å½“ leader
+" ½« f{char}µÄ back ²Ù×÷Ó³Éäµ½"\"ÉÏ£¬","³äµ± leader
 noremap \ ,
 
-" pangu.vim æ’ä»¶è‡ªåŠ¨æ·»åŠ ç©ºæ ¼
+" pangu.vim ²å¼ş×Ô¶¯Ìí¼Ó¿Õ¸ñ
 "autocmd BufWritePre *.markdown,*.md,*.text,*.txt,*.wiki,*.cnx call PanGuSpacing()
 
-" å¼€å¯ matchit æ’ä»¶ï¼Œä½¿ç”¨ % åŒ¹é…å…³é”®å­—
+" ¿ªÆô matchit ²å¼ş£¬Ê¹ÓÃ % Æ¥Åä¹Ø¼ü×Ö
 packadd! matchit
 
-" æ‹¼å†™æ£€æŸ¥è¯­è¨€ä¸ºä¸­è‹±æ–‡
+" Æ´Ğ´¼ì²éÓïÑÔÎªÖĞÓ¢ÎÄ
 set spelllang=en,cjk
-" <leader>s æ‰“å¼€ã€å…³é—­æ‹¼å†™æ£€æŸ¥
+" <leader>s ´ò¿ª¡¢¹Ø±ÕÆ´Ğ´¼ì²é
 nnoremap <leader>s :set invspell<CR>:set spell?<CR>
 
-" markdown-preview æ’ä»¶ç›¸å…³è®¾ç½®
+" markdown-preview ²å¼şÏà¹ØÉèÖÃ
 let g:mkdp_auto_close=0
 
-" é»˜è®¤æ±‡ç¼–è¯­è¨€
+" Ä¬ÈÏ»ã±àÓïÑÔ
 let asmsyntax="masm"
 
 " FZF shortcut
@@ -229,8 +228,8 @@ nnoremap H gT
 nnoremap L gt
 
 " find TODO
-nnoremap <C-N> /\([%#/]* \)TODO.*$<CR>:noh<CR>ztgn<C-G>
-snoremap <C-N> <ESC>/\([%#/]* \)TODO.*$<CR>:noh<CR>ztgn<C-G>
+nnoremap <C-N> /\([%#/]* \)\?.*TODO.*$<CR>:noh<CR>ztgn<C-G>
+snoremap <C-N> <ESC>/\([%#/]* \)\?.*TODO.*$<CR>:noh<CR>ztgn<C-G>
 
 " emmet settings
 " only for html css and markdown
@@ -243,8 +242,12 @@ autocmd FileType python hi ColorColumn ctermbg=none ctermfg=255
 
 " vimtex
 let maplocalleader = ','
-let g:tex_flavor='pdflatex'
-let g:vimtex_view_method='zathura'
+let g:tex_flavor='XeLaTeX'
+if has("win32")
+    let g:vimtex_view_general_viewer = "SumatraPDF"
+else
+    let g:vimtex_view_method='zathura'
+endif
 let g:vimtex_view_general_options = '-reuse-instance -forward-search @tex @line @pdf'
 let g:vimtex_view_general_options_latexmk = '-reuse-instance'
 let g:vimtex_quickfix_mode=0
@@ -294,17 +297,17 @@ map <F9> : call Run() <CR>
 
 "set makeprg=g++\ %\ -o\ %<\ -g\ -Wall\ -Wextra\ -DLAEKOV_LOCAL
 func Save()
-call Highlight_marks()
-exec "w"
 if &filetype=='javascript'
     set expandtab
 elseif &filetype=='python'
     exec "Autopep8"
 endif
+call Highlight_marks()
+exec "w"
 endfunc
 
 func Highlight_marks()
-" æ ‡è®° <NOTE>
+" ±ê¼Ç <NOTE>
 exec "match Todo /<.*NOTE.*>/"
 endfunc
 call Highlight_marks()
