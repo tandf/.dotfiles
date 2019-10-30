@@ -56,7 +56,7 @@ filetype plugin on
 """""""""""""""""""""""""Vundle"""""""""""""""""""""""""
 
 " Reloading vimrc
-command LoadVimrc :so $MYVIMRC<CR>
+command LoadVimrc so $MYVIMRC
 
 " ¿ªÆô¸ßÁÁ
 syntax enable
@@ -285,6 +285,7 @@ function! LoadCscope()
 endfunction
 au BufEnter * call LoadCscope()
 set cscopequickfix=c-,d-,e-,g-,i-,s-,t-
+noremap <leader>/ :cs f s <cword><CR>
 
 " leetcode
 command LT !leetcode test %
