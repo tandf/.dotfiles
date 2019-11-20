@@ -18,6 +18,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'KeitaNakamura/tex-conceal.vim'
 Plugin 'Markdown'
+Plugin 'MattesGroeger/vim-bookmarks'
 Plugin 'SirVer/ultisnips'
 Plugin 'Solarized'
 Plugin 'easymotion/vim-easymotion'
@@ -26,8 +27,6 @@ Plugin 'hotoo/pangu.vim'
 Plugin 'iamcco/markdown-preview.vim'
 Plugin 'iamcco/mathjax-support-for-mkdp'
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'lervag/vimtex'
 Plugin 'mattn/emmet-vim'
@@ -55,6 +54,33 @@ filetype plugin on
 " 将你自己的非插件片段放在这行之后
 """""""""""""""""""""""""Vundle"""""""""""""""""""""""""
 
+" leader 键
+let mapleader=","
+
+" 将 f{char}的 back 操作映射到"\"上，","充当 leader
+noremap \ ,
+
+" vim-easymotion shortcut
+let g:EasyMotion_do_mapping = 0
+" s{char} to move to {char}
+nmap S <Plug>(easymotion-overwin-f)
+" Move to line
+nmap <Leader>l <Plug>(easymotion-bd-jk)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+
+" vim-bookmarks
+let g:bookmark_auto_close = 1
+let g:bookmark_no_default_key_mappings = 1
+nmap mm <Plug>BookmarkToggle
+nmap mi <Plug>BookmarkAnnotate
+nmap mn <Plug>BookmarkNext
+nmap mp <Plug>BookmarkPrev
+nmap ma <Plug>BookmarkShowAll
+nmap mkk <Plug>BookmarkMoveUp
+nmap mjj <Plug>BookmarkMoveDown
+let g:bookmark_sign = '>>'
+
 " Reloading vimrc
 command LoadVimrc so $MYVIMRC
 
@@ -74,9 +100,6 @@ source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 " 解决 console 提示信息输出乱码
 language messages zh_CN.utf-8
-
-" leader 键
-let mapleader=","
 
 " 大小写设置
 set ignorecase
@@ -182,10 +205,7 @@ cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
 
 " 补全菜单设置
-set wildmode=list:full
-
-" 将 f{char}的 back 操作映射到"\"上，","充当 leader
-noremap \ ,
+set wildmode=list:longest
 
 " pangu.vim 插件自动添加空格
 "autocmd BufWritePre *.markdown,*.md,*.text,*.txt,*.wiki,*.cnx call PanGuSpacing()
@@ -204,23 +224,18 @@ let g:mkdp_auto_close=0
 " 默认汇编语言
 let asmsyntax="masm"
 
-" FZF shortcut
-nnoremap <leader>f :FZF<CR>
-
 " vim-easy-align settings
 xmap <leader>a <Plug>(EasyAlign)
 nmap <leader>a <Plug>(EasyAlign)
 
 " move to the same place of another pane
-nnoremap gW :call SwitchToAnotherPane()<CR>
+nnoremap <c-w>w :call SwitchToAnotherPane()<CR>
 func SwitchToAnotherPane()
     " If only one pane, split
     if winnr('$') == 1
         exec "vsplit"
     end
-    if winnr('$') == 2
-        execute 'normal! mH`H'
-    end
+    exec 'normal! mH`H'
 endfunc
 
 " move in tabs
