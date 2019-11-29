@@ -289,6 +289,7 @@ let g:vimtex_view_general_options_latexmk = '-reuse-instance'
 let g:vimtex_quickfix_mode=0
 set conceallevel=2
 let g:tex_conceal='abdmg'
+autocmd FileType tex nnoremap g<C-g> :VimtexCountWords<CR>
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
