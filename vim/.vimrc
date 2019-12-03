@@ -54,6 +54,13 @@ filetype plugin on
 " 将你自己的非插件片段放在这行之后
 """""""""""""""""""""""""Vundle"""""""""""""""""""""""""
 
+" Nerdcommenter
+let g:NERDUsePlaceHolders=0
+let g:NERDSpaceDelims=1
+
+" Highlight the 71th character
+set colorcolumn=71
+
 " leader 键
 let mapleader=","
 
@@ -112,9 +119,9 @@ syntax enable
 set encoding=utf-8
 set fileencodings=utf-8,chinese,latin-1,gbk,gb18030,gk2312
 if has("win32")
-set fileencoding=chinese
+    set fileencoding=chinese
 else
-set fileencoding=utf-8
+    set fileencoding=utf-8
 endif
 " 解决菜单乱码
 source $VIMRUNTIME/delmenu.vim
@@ -264,8 +271,8 @@ nnoremap H gT
 nnoremap L gt
 
 " find TODO
-nnoremap <C-N> /\([%#/]* \)\?.*TODO.*$<CR>:noh<CR>ztgn<C-G>
-snoremap <C-N> <ESC>/\([%#/]* \)\?.*TODO.*$<CR>:noh<CR>ztgn<C-G>
+nnoremap <C-N> /\([%#/*]* \)\?TODO.*$<CR>:noh<CR>ztgn<C-G>
+snoremap <C-N> <ESC>/\([%#/*]* \)\?TODO.*$<CR>:noh<CR>ztgn<C-G>
 
 " emmet settings
 " only for html css and markdown
