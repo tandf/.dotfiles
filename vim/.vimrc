@@ -1,15 +1,13 @@
+" Source machine-specific resource file, whoes name is [vimrc]_local.
+exec "so ".$MYVIMRC."_local"
+
 """""""""""""""""""""""""Vundle"""""""""""""""""""""""""
 set nocompatible              " 去除 VI 一致性，必须
 filetype off                  " 必须
 
 " 设置包括 vundle 和初始化相关的 runtime path
-if has("win32")
-    set rtp+=E:/Software/Vim/vimfiles/bundle/Vundle.vim
-    call vundle#begin("E:/Software/Vim/vimfiles/bundle")
-else
-    set rtp+=~/.vim/bundle/Vundle.vim
-    call vundle#begin()
-endif
+exec 'set rtp+='.g:LocalVundleRTP
+call vundle#begin(g:LocalVundlePath)
 
 " 让 vundle 管理插件版本，必须
 Plugin 'VundleVim/Vundle.vim'
@@ -122,11 +120,7 @@ syntax enable
 " 设置文件编码格式
 set encoding=utf-8
 set fileencodings=utf-8,chinese,latin-1,gbk,gb18030,gk2312
-if has("win32")
-    set fileencoding=chinese
-else
-    set fileencoding=utf-8
-endif
+exec 'set fileencoding='.g:LocalFileEncoding
 " 解决菜单乱码
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
@@ -155,7 +149,7 @@ set incsearch
 nnoremap <leader>n :set hlsearch<CR>:%s///gn<CR><C-o>
 
 " gui 设置
-set guifont=Consolas:h12:cANSI
+exec 'set guifont='.g:LocalFont
 " 不显示菜单、工具栏、滚动条
 set guioptions-=TrLm
 " 取消边框
@@ -306,11 +300,6 @@ autocmd FileType tex nnoremap g<C-g> :VimtexCountWords<CR>
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-if has("win32")
-    let g:UltiSnipsSnippetsDir = "E:/Software/Vim/vimfiles/bundle/ultisnips/UltiSnips"
-else
-    let g:UltiSnipsSnippetsDir = "~/.vim/bundle/ultisnips/UltiSnips"
-endif
 
 " ctags
 set tags=tags;
