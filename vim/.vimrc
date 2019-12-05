@@ -7,7 +7,7 @@ filetype off                  " 必须
 
 " 设置包括 vundle 和初始化相关的 runtime path
 exec 'set rtp+='.g:LocalVundleRTP
-if g:LocalVundlePath
+if g:LocalVundlePath != ""
     call vundle#begin(g:LocalVundlePath)
 else
     call vundle#begin()
