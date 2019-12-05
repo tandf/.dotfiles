@@ -1,6 +1,6 @@
 " For Linux
 let g:LocalFileEncoding='utf-8'
 let g:LocalFont='Consolas:h12:cANSI'
+let g:LocalVundlePath=''
+let g:LocalVundleRTP='~/.vim/bundle/Vundle.vim/'
 let g:UltiSnipsSnippetsDir = '~/.vim/bundle/ultisnips/UltiSnips'
-let g:VundlePath=
-let g:VundleRTP='C:/Software/Vim/vimfiles/bundle/Vundle.vim'
