@@ -22,6 +22,7 @@ Plugin 'MattesGroeger/vim-bookmarks'
 Plugin 'SirVer/ultisnips'
 Plugin 'Solarized'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'gcmt/taboo.vim'
 Plugin 'honza/vim-snippets'
 Plugin 'hotoo/pangu.vim'
 Plugin 'iamcco/markdown-preview.vim'
@@ -54,8 +55,11 @@ filetype plugin on
 " 将你自己的非插件片段放在这行之后
 """""""""""""""""""""""""Vundle"""""""""""""""""""""""""
 
+" Taboo
+let g:taboo_tab_format=" [%f]%U%m "
+let g:taboo_renamed_tab_format= " [%l]%U%m "
+
 " Nerdcommenter
-let g:NERDUsePlaceHolders=0
 let g:NERDSpaceDelims=1
 
 " Highlight the 71th character
