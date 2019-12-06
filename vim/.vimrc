@@ -374,6 +374,8 @@ elseif &filetype=='tex'
     exec "!xelatex %"
 elseif &filetype=='ruby'
     exec "!ruby -c %"
+elseif &filetype=='perl'
+    exec "!perl -w %"
 endif
 endfunc
 
@@ -406,6 +408,8 @@ elseif &filetype=='vb'
     exec "!%"
 elseif &filetype=='go'
     exec "!start cmd /c \"go run %\" & pause"
+elseif &filetype=='perl'
+    exec "!perl %"
 else
     if has("win32")
         exec "!%<.exe"
