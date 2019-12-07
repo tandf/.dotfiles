@@ -17,4 +17,6 @@ Run install script:
 ## TODO
 - [ ] Split vimrc according to function. Like [this repo](https://github.com/skywind3000/vim-init).
   - [x] Specific viriable for specific OS.
-- [ ] Add `source ~/.bashrc_tandf` to .bashrc automatically.
+- [x] Add `source ~/.bashrc_tandf` to .bashrc automatically.
+- [ ] Custom status line.
+    - [ ] Show word count for md and similar files.
