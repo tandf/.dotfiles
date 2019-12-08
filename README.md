@@ -18,5 +18,6 @@ Run install script:
 - [ ] Split vimrc according to function. Like [this repo](https://github.com/skywind3000/vim-init).
   - [x] Specific viriable for specific OS.
 - [x] Add `source ~/.bashrc_tandf` to .bashrc automatically.
-- [ ] Custom status line.
-    - [ ] Show word count for md and similar files.
+- [x] Custom status line.
+    - [x] Show word count for md and similar files.
+- [ ] A better colorscheme (than solarized).
