@@ -57,6 +57,14 @@ filetype plugin on
 " 将你自己的非插件片段放在这行之后
 """""""""""""""""""""""""Vundle"""""""""""""""""""""""""
 
+" Update ctags and cscopes file
+command UpdateTags call UpdateTags()
+function! g:UpdateTags()
+    exec 'cd' . finddir('.git/..', ';')
+    exec "!ctags -Rb"
+    exec "!cscope -Rb"
+endfunction
+
 " Status line
 set laststatus=2
 set statusline=[%n]\ %F\ [%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=
@@ -121,7 +129,6 @@ function! g:BMWorkDirFileLocation()
     if len(location) > 0
         return location.'/.'.filename
     else
-        "return getcwd().'/.'.filename
         return $HOME.'/.vim-bookmarks'
     endif
 endfunction
