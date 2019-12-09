@@ -60,7 +60,10 @@ filetype plugin on
 " Update ctags and cscopes file
 command UpdateTags call UpdateTags()
 function! g:UpdateTags()
-    exec 'cd' . finddir('.git/..', ';')
+    let gitPath=finddir('.git', ';')
+    if len(gitPath) > 0
+        exec 'cd ' . gitPath . '/..'
+    endif
     exec "!ctags -Rb"
     exec "!cscope -Rb"
 endfunction
