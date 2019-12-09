@@ -75,8 +75,8 @@ let g:taboo_renamed_tab_format= " [%l]%U%m "
 " Nerdcommenter
 let g:NERDSpaceDelims=1
 
-" Highlight the 71th character
-set colorcolumn=71
+" Highlight the 81th character
+set colorcolumn=81
 
 " leader 键
 let mapleader=","
