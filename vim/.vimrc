@@ -64,8 +64,10 @@ function! g:UpdateTags()
     if len(gitPath) > 0
         exec 'cd ' . gitPath . '/..'
     endif
-    exec "!ctags -Rb"
-    exec "!cscope -Rb"
+    exec '!ctags -Rb'
+    exec 'cs kill 0'
+    exec '!cscope -Rb'
+    call LoadCscope()
 endfunction
 
 " Status line
@@ -334,16 +336,16 @@ nnoremap <c-]> g<c-]>
 " cscope
 set csre
 function! LoadCscope()
-  let db = findfile("cscope.out", ".;")
-  if (!empty(db))
-    let path = strpart(db, 0, match(db, "/cscope.out$"))
-    set nocscopeverbose " suppress 'duplicate connection' error
-    exe "cs add " . db . " " . path
-    set cscopeverbose
-  " else add the database pointed to by environment variable 
-  elseif $CSCOPE_DB != "" 
-    cs add $CSCOPE_DB
-  endif
+    let db = findfile("cscope.out", ".;")
+    if (!empty(db))
+        let path = strpart(db, 0, match(db, "/cscope.out$"))
+        set nocscopeverbose " suppress 'duplicate connection' error
+        exe "cs add " . db . " " . path
+        set cscopeverbose
+        " else add the database pointed to by environment variable 
+    elseif $CSCOPE_DB != "" 
+        cs add $CSCOPE_DB
+    endif
 endfunction
 au BufEnter * call LoadCscope()
 set cscopequickfix=c-,d-,e-,g-,i-,s-,t-
