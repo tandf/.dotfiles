@@ -21,3 +21,4 @@ Run install script:
 - [x] Custom status line.
     - [x] Show word count for md and similar files.
 - [ ] A better colorscheme (than solarized).
+- [ ] pandoc md to html
