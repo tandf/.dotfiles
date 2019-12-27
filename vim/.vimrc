@@ -32,7 +32,6 @@ Plugin 'iamcco/markdown-preview.vim'
 Plugin 'iamcco/mathjax-support-for-mkdp'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'junegunn/vim-easy-align'
-Plugin 'l04m33/vlime', {'rtp': 'vim/'}
 Plugin 'lervag/vimtex'
 Plugin 'mattn/emmet-vim'
 Plugin 'nelstrom/vim-markdown-folding'
