@@ -23,6 +23,7 @@ Plugin 'Markdown'
 Plugin 'MattesGroeger/vim-bookmarks'
 Plugin 'SirVer/ultisnips'
 Plugin 'Solarized'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'gcmt/taboo.vim'
 Plugin 'honza/vim-snippets'
@@ -31,11 +32,13 @@ Plugin 'iamcco/markdown-preview.vim'
 Plugin 'iamcco/mathjax-support-for-mkdp'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'junegunn/vim-easy-align'
+Plugin 'l04m33/vlime', {'rtp': 'vim/'}
 Plugin 'lervag/vimtex'
 Plugin 'mattn/emmet-vim'
 Plugin 'nelstrom/vim-markdown-folding'
 Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
 Plugin 'tell-k/vim-autopep8'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-surround'
@@ -56,6 +59,13 @@ filetype plugin on
 " 查阅 :h vundle 获取更多细节和 wiki 以及 FAQ
 " 将你自己的非插件片段放在这行之后
 """""""""""""""""""""""""Vundle"""""""""""""""""""""""""
+
+" NERDTree
+map <F3> : NERDTreeToggle <CR>
+let NERDTreeAutoCenter=1
+let NERDTreeWinSize=32
+let NERDTreeIgnore=['\.pyc$','\.swp$']
+let NERDTreeMinimalUI = 1
 
 " Update ctags and cscopes file
 command UpdateTags call UpdateTags()
@@ -356,7 +366,6 @@ command LT !leetcode test %
 command LS !leetcode submit %
 
 map <F2> : call Save() <CR>
-map <F4> : !echo % <CR>
 map <F7> : call Compile() <CR>
 map <F9> : call Run() <CR>
 
