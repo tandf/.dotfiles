@@ -19,7 +19,7 @@ Plugin 'VundleVim/Vundle.vim'
 " 请将安装插件的命令放在 vundle#begin 和 vundle#end 之间。
 
 Plugin 'KeitaNakamura/tex-conceal.vim'
-Plugin 'Markdown'
+Plugin 'plasticboy/vim-markdown'
 Plugin 'MattesGroeger/vim-bookmarks'
 Plugin 'SirVer/ultisnips'
 Plugin 'Solarized'
@@ -34,7 +34,6 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'lervag/vimtex'
 Plugin 'mattn/emmet-vim'
-Plugin 'nelstrom/vim-markdown-folding'
 Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
@@ -58,6 +57,9 @@ filetype plugin on
 " 查阅 :h vundle 获取更多细节和 wiki 以及 FAQ
 " 将你自己的非插件片段放在这行之后
 """""""""""""""""""""""""Vundle"""""""""""""""""""""""""
+
+" vim-markdown
+let g:vim_markdown_folding_disabled = 1
 
 " NERDTree
 map <F3> : NERDTreeToggle <CR>
@@ -268,9 +270,6 @@ cnoremap <C-N> <Down>
 
 " 补全菜单设置
 set wildmode=list:longest
-
-" pangu.vim 插件自动添加空格
-"autocmd BufWritePre *.markdown,*.md,*.text,*.txt,*.wiki,*.cnx call PanGuSpacing()
 
 " 开启 matchit 插件，使用 % 匹配关键字
 packadd! matchit
