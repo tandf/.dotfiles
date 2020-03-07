@@ -164,7 +164,7 @@ exec 'set fileencoding='.g:LocalFileEncoding
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 " 解决 console 提示信息输出乱码
-language messages zh_CN.utf-8
+" language messages zh_CN.utf-8
 
 " 大小写设置
 set ignorecase
