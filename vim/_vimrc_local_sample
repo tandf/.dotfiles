@@ -1,6 +1,0 @@
-" For Windows
-let g:LocalFileEncoding='chinese'
-let g:LocalFont='Consolas:h11'
-let g:LocalVundlePath='C:/Software/Vim/vimfiles/bundle'
-let g:LocalVundleRTP='C:/Software/Vim/vimfiles/bundle/Vundle.vim'
-let g:UltiSnipsSnippetsDir = 'C:/Software/Vim/vimfiles/bundle/ultisnips/UltiSnips'
