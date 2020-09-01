@@ -231,9 +231,6 @@ cnoremap <C-N> <Down>
 " 补全菜单设置
 set wildmode=list:longest
 
-" 开启 matchit 插件，使用 % 匹配关键字
-packadd! matchit
-
 " 拼写检查语言为中英文
 set spelllang=en,cjk
 " <leader>s 打开、关闭拼写检查
