@@ -169,10 +169,14 @@ set number
 " 光标和底部距离
 set scrolloff=5
 " 配色设置
-" colors koehler
 set t_Co=256
 set background=dark
-colorscheme NeoSolarized
+" Using solarized
+if has("win32")
+    colorscheme NeoSolarized
+endif
+
+
 " 浅色高亮当前行、列
 set cursorline
 set cursorcolumn
