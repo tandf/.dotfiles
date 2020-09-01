@@ -131,7 +131,9 @@ set fileencodings=utf-8,chinese,latin-1,gbk,gb18030,gk2312
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 " 解决 console 提示信息输出乱码
+if has("win32")
 language messages zh_CN.utf-8
+endif
 
 " 大小写设置
 set ignorecase
