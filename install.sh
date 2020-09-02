@@ -6,6 +6,6 @@ echo "Write to .zshrc" )
 stow -t $HOME vim tmux bash nvim zsh
 
 # UltiSnips requires specific path
-if [ -d "~/.vim/bundle/ultisnips/UltiSnips" ]; then
-    stow -t ~/.vim/bundle/ultisnips/UltiSnips UltiSnips
+if [ -d "~/.vim/plugged/ultisnips/UltiSnips" ]; then
+    stow -t ~/.vim/plugged/ultisnips/UltiSnips
 fi
