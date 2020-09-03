@@ -1,5 +1,7 @@
 set -o vi
 
 alias tmux="tmux at || tmux"
+alias vi=nvim
+alias vim=nvim
 
 source ~/.oh-my-zsh/plugins/incr/incr*.zsh
