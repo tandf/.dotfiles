@@ -27,6 +27,7 @@ Plug 'tpope/vim-unimpaired'
 call plug#end()
 """""""""""""""""""""""""vim-plug"""""""""""""""""""""""""
 
+" Set default shell
 if has("win32")
     set shell=powershell
 else
