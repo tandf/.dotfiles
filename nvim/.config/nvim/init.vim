@@ -27,6 +27,12 @@ Plug 'tpope/vim-unimpaired'
 call plug#end()
 """""""""""""""""""""""""vim-plug"""""""""""""""""""""""""
 
+if has("win32")
+    set shell=powershell
+else
+    set shell=/bin/zsh
+endif
+
 " vim-markdown
 let g:vim_markdown_folding_disabled = 1
 
@@ -373,7 +379,7 @@ endfunc
 func Run()
 if &filetype=='python'
     if has("win32")
-        exec "!start cmd /c \"python %\" & pause"
+        exec "!python %"
     else
         exec "!python3 %"
     endif
@@ -398,7 +404,7 @@ elseif &filetype=='ruby'
 elseif &filetype=='vb'
     exec "!%"
 elseif &filetype=='go'
-    exec "!start cmd /c \"go run %\" & pause"
+    exec "go run %"
 elseif &filetype=='perl'
     exec "!perl %"
 else
