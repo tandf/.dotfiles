@@ -30,6 +30,9 @@ call plug#end()
 " Set default shell
 if has("win32")
     set shell=powershell
+    set shellquote= shellpipe=\| shellxquote=
+    set shellcmdflag=-NoLogo\ -NoProfile\ -ExecutionPolicy\ RemoteSigned\ -Command
+    set shellredir=\|\ Out-File\ -Encoding\ UTF8
 else
     set shell=/bin/zsh
 endif
@@ -139,7 +142,7 @@ source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 " 解决 console 提示信息输出乱码
 if has("win32")
-language messages zh_CN.utf-8
+    language messages zh_CN.utf-8
 endif
 
 " 大小写设置
