@@ -1,16 +1,13 @@
 stow -t $HOME vim tmux bash nvim zsh
 
 # UltiSnips requires specific path
-if [ ! -d ~/.vim/plugged/ultisnips/UltiSnips ]; then
-    mkdir -p ~/.vim/plugged/ultisnips/UltiSnips
+if [ -d ~/.vim/plugged/ultisnips/UltiSnips ]; then
+    stow -t ~/.vim/plugged/ultisnips/UltiSnips UltiSnips
 fi
-stow -t ~/.vim/plugged/ultisnips/UltiSnips UltiSnips
 
 # Install oh-my-zsh
 if [ ! -d ~/.oh-my-zsh ]; then
     echo "========== installing oh-my-zsh =========="
-    # not working due to "network problems" that everyone knows
-    # sh -c "$(proxychains curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     sh misc/ohmyzsh-install.sh
 fi
 
