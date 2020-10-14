@@ -3,13 +3,12 @@ call plug#begin('~/.vim/plugged')
 Plug 'KeitaNakamura/tex-conceal.vim'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'SirVer/ultisnips'
-Plug 'overcache/NeoSolarized'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'easymotion/vim-easymotion'
 Plug 'gcmt/taboo.vim'
 Plug 'honza/vim-snippets'
 Plug 'hotoo/pangu.vim'
-Plug 'iamcco/markdown-preview.vim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'iamcco/mathjax-support-for-mkdp'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
@@ -17,6 +16,7 @@ Plug 'lervag/vimtex'
 Plug 'mattn/emmet-vim'
 Plug 'mzlogin/vim-markdown-toc'
 Plug 'nelstrom/vim-visual-star-search'
+Plug 'overcache/NeoSolarized'
 Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
@@ -26,7 +26,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 call plug#end()
 """""""""""""""""""""""""vim-plug"""""""""""""""""""""""""
-
 " Set default shell
 if has("win32")
     set shell=powershell
