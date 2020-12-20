@@ -27,7 +27,12 @@ plugins="git zsh-autosuggestions"
 sed -i "s/^plugins=.*$/plugins=($plugins)/g" ~/.zshrc
 
 stow -t $HOME vim tmux bash zsh
-stow
+
+# nvim requires specific path
+if [ ! -d ~/.config/nvim ]; then
+    mkdir -p ~/.config/nvim
+fi
+stow -t ~/.config/nvim nvim
 
 # UltiSnips requires specific path
 if [ -d ~/.vim/plugged/ultisnips/UltiSnips ]; then
