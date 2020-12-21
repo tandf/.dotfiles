@@ -10,7 +10,7 @@ if [ ! -d ~/.oh-my-zsh ]; then
 fi
 
 # install incr.zsh
-if [ ! -e ~/.oh-my-zsh/custom/plugins/incr/incr*.zsh ]; then
+if [ ! -e ~/.oh-my-zsh/custom/plugins/incr/incr-0.2.zsh ]; then
     echo "========== installing incr =========="
     mkdir ~/.oh-my-zsh/custom/plugins/incr -p
     cp misc/incr-0.2.zsh ~/.oh-my-zsh/custom/plugins/incr/
