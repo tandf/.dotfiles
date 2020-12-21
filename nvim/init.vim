@@ -5,7 +5,6 @@ Plug 'MattesGroeger/vim-bookmarks'
 Plug 'SirVer/ultisnips'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'easymotion/vim-easymotion'
-Plug 'gcmt/taboo.vim'
 Plug 'honza/vim-snippets'
 Plug 'hotoo/pangu.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
@@ -26,12 +25,35 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 call plug#end()
 """""""""""""""""""""""""vim-plug"""""""""""""""""""""""""
+
+" Use clang-format
+autocmd FileType c,cpp setlocal equalprg=clang-format
+
+" Automatically reload changed content
+autocmd FocusGained * silent! checktime
+
+function! TabMessage(cmd)
+  redir => message
+  silent execute a:cmd
+  redir END
+  if empty(message)
+    echoerr "no output"
+  else
+    tabnew
+    setlocal buftype=nofile bufhidden=wipe noswapfile nobuflisted nomodified
+    silent put=message
+    exec 'silent %s///g'
+  endif
+endfunction
+command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
+
 " Set default shell
 if has("win32")
-    set shell=powershell
-    set shellquote= shellpipe=\| shellxquote=
-    set shellcmdflag=-NoLogo\ -NoProfile\ -ExecutionPolicy\ RemoteSigned\ -Command
-    set shellredir=\|\ Out-File\ -Encoding\ UTF8
+    set shell=cmd
+    " set shell=powershell
+    " set shellquote= shellpipe=\| shellxquote=
+    " set shellcmdflag=-NoLogo\ -NoProfile\ -ExecutionPolicy\ RemoteSigned\ -Command
+    " set shellredir=\|\ Out-File\ -Encoding\ UTF8
 else
     set shell=/bin/zsh
 endif
@@ -53,8 +75,8 @@ function! g:UpdateTags()
     if len(gitPath) > 0
         exec 'cd ' . gitPath . '/..'
     endif
-    exec '!ctags -Rb'
-    exec 'cs kill 0'
+    exec '!ctags -R .'
+    exec 'cs kill -1'
     exec '!cscope -Rb'
     call LoadCscope()
 endfunction
@@ -88,12 +110,10 @@ noremap \ ,
 
 " vim-easymotion shortcut
 let g:EasyMotion_do_mapping = 0
-" s{char} to move to {char}
+" S{char} to move to {char}
 nmap S <Plug>(easymotion-overwin-f)
 " Move to line
 nmap <Leader>l <Plug>(easymotion-bd-jk)
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
 
 " vim-bookmarks
 let g:bookmark_auto_close = 1
@@ -156,8 +176,6 @@ noremap / :set hlsearch<CR>/
 noremap ? :set hlsearch<CR>?
 noremap * *:set hlsearch<CR>N
 noremap # #:set hlsearch<CR>N
-"" 当光标一段时间保持不动了，就禁用高亮
-"autocmd cursorhold * set nohlsearch
 " <C-l>手动关闭高亮
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 " 搜索的同时即时显示结果
@@ -308,8 +326,7 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsSnippetDirectories = ["~/.vim/plugged/ultisnips/UltiSnips"]
 
 " ctags
-set tags=tags;
-set autochdir
+set tags=tags;/
 nnoremap <c-]> g<c-]>
 
 " cscope
@@ -358,9 +375,9 @@ func Compile()
 exec "w"
 if &filetype=='cpp'
     if has("win32")
-        exec "!g++ % -o %< -std=c++0x -g -Wall -Wextra -DLAEKOV_LOCAL && size %<.exe"
+        exec "!g++ % -o %< -std=c++0x -g -fdiagnostics-color=auto"
     else
-        exec "!g++ % -o %< -std=c++0x -g -Wall -Wextra -DLAEKOV_LOCAL && size %<"
+        exec "!g++ % -o %< -std=c++0x -g -Wall -Wextra && size %<"
     endif
 elseif &filetype=='c'
     exec "!gcc %  -o %< -g"
@@ -382,7 +399,7 @@ endfunc
 func Run()
 if &filetype=='python'
     if has("win32")
-        exec "!python %"
+        exec "TabMessage :!python %"
     else
         exec "!python3 %"
     endif
@@ -410,9 +427,11 @@ elseif &filetype=='go'
     exec "go run %"
 elseif &filetype=='perl'
     exec "!perl %"
+elseif &filetype=='dosbatch' && has("win32")
+    exec "!./%"
 else
     if has("win32")
-        exec "!%<.exe"
+        exec "!./%<.exe"
     else
         exec "!./%<"
     endif
