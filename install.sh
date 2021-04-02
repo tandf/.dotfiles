@@ -50,6 +50,13 @@ if [ ! -d ~/.config/nvim ]; then
 fi
 stow -t ~/.config/nvim nvim
 
+# fusuma requires specific path
+if [ ! -d ~/.config/fusuma ]; then
+    echo "========== creating ~/.config/fusuma =========="
+    mkdir -p ~/.config/fusuma
+fi
+stow -t ~/.config/fusuma fusuma
+
 # UltiSnips requires specific path
 if [ -d ~/.vim/plugged/ultisnips/UltiSnips ]; then
     stow -t ~/.vim/plugged/ultisnips/UltiSnips UltiSnips

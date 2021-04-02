@@ -1,0 +1,14 @@
+swipe:
+  4:
+    left:
+      command: "xdotool key ctrl+alt+Left" # Switch to next workspace
+      threshold: 0.5
+      interval: 0.4
+    right:
+      command: "xdotool key ctrl+alt+Right" # Switch to previous workspace
+      threshold: 0.5
+      interval: 0.4
+    up:
+      command: "xdotool key super"
+    down:
+      command: "xdotool key super"
