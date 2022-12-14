@@ -30,3 +30,5 @@ bindkey -M vicmd v edit-command-line
 # Use c-p and c-n to search history
 bindkey '^P' history-substring-search-up
 bindkey '^N' history-substring-search-down
+
+alias cdd="cd ~/Downloads"
