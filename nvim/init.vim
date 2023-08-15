@@ -1,24 +1,15 @@
 """""""""""""""""""""""""vim-plug"""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
-Plug 'KeitaNakamura/tex-conceal.vim'
-Plug 'MattesGroeger/vim-bookmarks'
-Plug 'SirVer/ultisnips'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'easymotion/vim-easymotion'
-Plug 'honza/vim-snippets'
 Plug 'hotoo/pangu.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'iamcco/mathjax-support-for-mkdp'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
-Plug 'lervag/vimtex'
-Plug 'mattn/emmet-vim'
 Plug 'mzlogin/vim-markdown-toc'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'overcache/NeoSolarized'
 Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
 Plug 'tell-k/vim-autopep8'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-surround'
@@ -61,13 +52,6 @@ endif
 " vim-markdown
 let g:vim_markdown_folding_disabled = 1
 
-" NERDTree
-map <F3> : NERDTreeToggle <CR>
-let NERDTreeAutoCenter=1
-let NERDTreeWinSize=32
-let NERDTreeIgnore=['\.pyc$','\.swp$']
-let NERDTreeMinimalUI = 1
-
 " Update ctags and cscopes file
 command UpdateTags call UpdateTags()
 function! g:UpdateTags()
@@ -107,45 +91,6 @@ let mapleader=","
 
 " 将 f{char}的 back 操作映射到"\"上，","充当 leader
 noremap \ ,
-
-" vim-easymotion shortcut
-let g:EasyMotion_do_mapping = 0
-" S{char} to move to {char}
-nmap S <Plug>(easymotion-overwin-f)
-" Move to line
-nmap <Leader>l <Plug>(easymotion-bd-jk)
-
-" vim-bookmarks
-let g:bookmark_auto_close = 1
-let g:bookmark_no_default_key_mappings = 1
-nmap mm <Plug>BookmarkToggle
-nmap mi <Plug>BookmarkAnnotate
-nmap mn <Plug>BookmarkNext
-nmap mp <Plug>BookmarkPrev
-nmap ma <Plug>BookmarkShowAll
-nmap mkk <Plug>BookmarkMoveUp
-nmap mjj <Plug>BookmarkMoveDown
-let g:bookmark_sign = '>>'
-" Bookmark per project
-let g:bookmark_save_per_working_dir = 1
-let g:bookmark_auto_save = 1
-" Finds the Git super-project directory.
-function! g:BMWorkDirFileLocation()
-    let filename = 'bookmarks'
-    let location = ''
-    if isdirectory('.git')
-        " Current work dir is git's work tree
-        let location = getcwd().'/.git'
-    else
-        " Look upwards (at parents) for a directory named '.git'
-        let location = finddir('.git', '.;')
-    endif
-    if len(location) > 0
-        return location.'/.'.filename
-    else
-        return $HOME.'/.vim-bookmarks'
-    endif
-endfunction
 
 " Reloading vimrc
 command LoadVimrc so $MYVIMRC
@@ -295,35 +240,9 @@ nnoremap L gt
 nnoremap <C-N> /[%#/*<]*\s*TODO.*$<CR>:noh<CR>ztgn<C-G>
 snoremap <C-N> <ESC>/[%#/*<]*\s*TODO.*$<CR>:noh<CR>ztgn<C-G>
 
-" emmet settings
-" only for html css and markdown
-let g:user_emmet_install_global = 0
-autocmd FileType php,html,css,markdown,eruby EmmetInstall
-
 " Python show 81th character
 autocmd FileType python set colorcolumn=81
 autocmd FileType python hi ColorColumn ctermbg=none ctermfg=255
-
-" vimtex
-let maplocalleader = ','
-let g:tex_flavor='XeLaTeX'
-if has("win32")
-    let g:vimtex_view_general_viewer = "SumatraPDF"
-else
-    let g:vimtex_view_method='zathura'
-endif
-let g:vimtex_view_general_options = '-reuse-instance -forward-search @tex @line @pdf'
-let g:vimtex_view_general_options_latexmk = '-reuse-instance'
-let g:vimtex_quickfix_mode=0
-set conceallevel=2
-let g:tex_conceal='abdmg'
-autocmd FileType tex nnoremap g<C-g> :VimtexCountWords<CR>
-
-" UltiSnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:UltiSnipsSnippetDirectories = ["~/.vim/plugged/ultisnips/UltiSnips"]
 
 " ctags
 set tags=tags;/
