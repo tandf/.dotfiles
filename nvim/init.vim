@@ -52,19 +52,6 @@ endif
 " vim-markdown
 let g:vim_markdown_folding_disabled = 1
 
-" Update ctags and cscopes file
-command UpdateTags call UpdateTags()
-function! g:UpdateTags()
-    let gitPath=finddir('.git', ';')
-    if len(gitPath) > 0
-        exec 'cd ' . gitPath . '/..'
-    endif
-    exec '!ctags -R .'
-    exec 'cs kill -1'
-    exec '!cscope -Rb'
-    call LoadCscope()
-endfunction
-
 " Status line
 set laststatus=2
 set statusline=[%n]\ %F\ [%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=
@@ -153,8 +140,10 @@ endif
 set cursorline
 set cursorcolumn
 
-source $VIMRUNTIME/mswin.vim
-behave mswin
+if !has("mac")
+    source $VIMRUNTIME/mswin.vim
+    behave mswin
+endif
 
 " tab 键设置
 set expandtab
@@ -187,15 +176,17 @@ set nrformats=
 " 设置 Ex 命令缓存区长度
 set history=1000
 
-" 取消<C-V>快捷键以使用 Visual Block
-unmap <C-V>
-iunmap <C-V>
-" 取消<C-A>快捷键以使用加减操作
-unmap <C-A>
-iunmap <C-A>
-" 取消<C-Y>
-unmap <C-Y>
-iunmap <C-Y>
+if !has("mac")
+    " 取消<C-V>快捷键以使用 Visual Block
+    unmap <C-V>
+    iunmap <C-V>
+    " 取消<C-A>快捷键以使用加减操作
+    unmap <C-A>
+    iunmap <C-A>
+    " 取消<C-Y>
+    unmap <C-Y>
+    iunmap <C-Y>
+endif
 
 " 将命令行中输入的 %% 替换为当前目录
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:p:h').'/' : '%%'
@@ -243,32 +234,6 @@ snoremap <C-N> <ESC>/[%#/*<]*\s*TODO.*$<CR>:noh<CR>ztgn<C-G>
 " Python show 81th character
 autocmd FileType python set colorcolumn=81
 autocmd FileType python hi ColorColumn ctermbg=none ctermfg=255
-
-" ctags
-set tags=tags;/
-nnoremap <c-]> g<c-]>
-
-" cscope
-set csre
-function! LoadCscope()
-    let db = findfile("cscope.out", ".;")
-    if (!empty(db))
-        let path = strpart(db, 0, match(db, "/cscope.out$"))
-        set nocscopeverbose " suppress 'duplicate connection' error
-        exe "cs add " . db . " " . path
-        set cscopeverbose
-        " else add the database pointed to by environment variable 
-    elseif $CSCOPE_DB != "" 
-        cs add $CSCOPE_DB
-    endif
-endfunction
-au BufEnter * call LoadCscope()
-set cscopequickfix=c-,d-,e-,g-,i-,s-,t-
-noremap <leader>/ :cs f s <cword><CR>
-
-" leetcode
-command LT !leetcode test %
-command LS !leetcode submit %
 
 map <F2> : call Save() <CR>
 map <F7> : call Compile() <CR>
